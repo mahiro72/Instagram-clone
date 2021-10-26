@@ -1,5 +1,7 @@
-# Instagram clone
+# api_insta
 
+### バックエンド  
+python django
 
 ## memo  
 仮想環境 (venv)  
