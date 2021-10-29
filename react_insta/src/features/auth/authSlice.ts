@@ -12,12 +12,15 @@ const apiUrl = process.env.REACT_APP_DEV_API_URL;
 export const fetchAsyncLogin = createAsyncThunk(
     'auth/post', //actionの名前
     async (authen:PROPS_AUTHEN)=>{
+        console.log(`${apiUrl}authen/jwt/create`)
         const res = await axios.post(`${apiUrl}authen/jwt/create`,authen,{
             headers:{
                 'Content-Type':'application/json',
-            }
+            },
         });
-        return res.data
+        console.log('!!!!!',res)
+        
+        return res.data;
     }
 );
 
@@ -25,7 +28,7 @@ export const fetchAsyncLogin = createAsyncThunk(
 export const fetchAsyncRegister = createAsyncThunk(
     'auth/register', //actionの名前
     async (auth:PROPS_AUTHEN)=>{
-        const res = await axios.post(`${apiUrl}api/register`,auth,{
+        const res = await axios.post(`${apiUrl}api/register/`,auth,{
             headers:{
                 'Content-Type':'application/json',
             }
@@ -37,7 +40,7 @@ export const fetchAsyncRegister = createAsyncThunk(
 export const fetchAsyncCreateProf = createAsyncThunk(
     'profile/post', //actionの名前
     async (nickName:PROPS_NICKNAME)=>{
-        const res = await axios.post(`${apiUrl}api/profile`,nickName,{
+        const res = await axios.post(`${apiUrl}api/profile/`,nickName,{
             headers:{
                 'Content-Type':'application/json',
                 Authorization:`JWT ${localStorage.localJWT}`
@@ -62,10 +65,10 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
         {
             headers:{
                 'Content-Type':'application/json',
-                Authorization:`JWT ${localStorage.localJWT}`
-            }
+                Authorization:`JWT ${localStorage.localJWT}`,
+            },
         });
-        return res.data
+        return res.data;
     }
 );
 
@@ -74,13 +77,13 @@ export const fetchAsyncUpdateProf = createAsyncThunk(
 export const fetchAsyncGetMyProf = createAsyncThunk(
     'profile/get', //actionの名前
     async ()=>{
-        const res = await axios.get(`${apiUrl}api/myprofile`,
+        const res = await axios.get(`${apiUrl}api/myprofile/`,
         {
             headers:{
-                Authorization:`JWT ${localStorage.localJWT}`
+                Authorization:`JWT ${localStorage.localJWT}`,
             }
         });
-        return res.data[0]
+        return res.data[0];
     }
 );
 
@@ -88,13 +91,13 @@ export const fetchAsyncGetMyProf = createAsyncThunk(
 export const fetchAsyncGetProfs = createAsyncThunk(
     'profiles/get', //actionの名前
     async ()=>{
-        const res = await axios.get(`${apiUrl}api/profile`,
+        const res = await axios.get(`${apiUrl}api/profile/`,
         {
             headers:{
-                Authorization:`JWT ${localStorage.localJWT}`
-            }
+                Authorization:`JWT ${localStorage.localJWT}`,
+            },
         });
-        return res.data
+        return res.data;
     }
 );
 
@@ -193,7 +196,7 @@ export const {
     resetOpenSignUp,
     setOpenProfile,
     resetOpenProfile,
-    editNickname
+    editNickname,
 } = authSlice.actions;
 
 
