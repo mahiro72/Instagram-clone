@@ -28,6 +28,7 @@ import {
     fetchAsyncCreateProf,
 
 } from './authSlice'
+import { fetchAsyncGetPosts,fetchAsyncGetComments} from '../post/postSlice';
 
 const customStyles = {
     overlay: {
@@ -74,6 +75,9 @@ const Auth:React.FC = () => {
                       await dispatch(fetchAsyncLogin(values)); //access token発行
                       await dispatch(fetchAsyncCreateProf({nickName:'anonymous'}));
                       await dispatch(fetchAsyncGetProfs()); //prof一覧
+
+                      await dispatch(fetchAsyncGetPosts());
+                      await dispatch(fetchAsyncGetComments());
                       await dispatch(fetchAsyncGetMyProf());
                   }
                   await dispatch(fetchCredEnd());
@@ -190,8 +194,10 @@ const Auth:React.FC = () => {
                   if (fetchAsyncLogin.fulfilled.match(result)){
                       //正常終了
                       await dispatch(fetchAsyncGetProfs()); //prof一覧
+                      await dispatch(fetchAsyncGetPosts());
+                      await dispatch(fetchAsyncGetComments());
                       await dispatch(fetchAsyncGetMyProf());
-                      console.log('test')
+                    //   console.log('test')
                   }
                   await dispatch(fetchCredEnd());
                   await dispatch(resetOpenSignIn());
