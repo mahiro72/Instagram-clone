@@ -209,7 +209,7 @@ export const {
 
 
 export const selectIsLoadingPost= (state:RootState)=>state.post.isLoadingPost;
-export const selectOpenNewPostn = (state:RootState)=>state.post.openNewPost;
+export const selectOpenNewPost = (state:RootState)=>state.post.openNewPost;
 export const selectPosts = (state:RootState)=>state.post.posts;
 export const selectComments = (state:RootState)=>state.post.comments;
 

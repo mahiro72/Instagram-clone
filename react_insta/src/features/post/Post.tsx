@@ -40,7 +40,7 @@ const Post: React.FC<PROPS_POST> = ({
   imageUrl,
   liked,
 }) => {
-    console.log('test#####')
+    
   const classes = useStyles();
   const dispatch: AppDispatch = useDispatch();
   const profiles = useSelector(selectProfiles);
@@ -154,7 +154,7 @@ const Post: React.FC<PROPS_POST> = ({
       </div>
     );
   }
-  {console.log('###teststset')}
+  
   return null;
 };
 
